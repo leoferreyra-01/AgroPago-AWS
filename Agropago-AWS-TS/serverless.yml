@@ -6,19 +6,19 @@ useDotenv: true
 
 custom:
   settings:
-    ACCOUNT_ID: "957429122486"
+    ACCOUNT_ID: "<Your Account ID>"
 
 provider:
   name: aws
   runtime: nodejs14.x
-  region: us-east-1
+  region: <Your Region>
   environment: ${self:custom.settings}
 
   iamRoleStatements:
     - Effect: "Allow"
       Action:
         - "sqs:SendMessage"
-      Resource: "arn:aws:sqs:${self:provider.region}:957429122486:MyQueue"
+      Resource: "arn:aws:sqs:${self:provider.region}:${self:custom.settings.ACCOUNT_ID}:MyQueue"
 
 functions:
   msg:
