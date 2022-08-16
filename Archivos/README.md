@@ -49,6 +49,19 @@
   <img height="500" src="./img/Github13.png" />
 </p>
 
+- Para finalizar asignaremos el rol que hemos creado anteriormente a nuestras funciones Lambda. Para ello buscamos Lambda como lo hemos hecho con anterioridad, seleccionamos la funcion a la que le deseemos asignar el rol (En este caso se lo vamos a asignar a las dos), nos vamos a Configuración-Permisos y en Rol de ejecución le damos en Editar.
+
+<p align="left">
+  <img height="500" src="./img/Github14.png" />
+</p>
+
+- Aqui seleccionamos el Rol que acabamos de crear y le damos a guardar.
+
+<p align="left">
+  <img height="500" src="./img/Github15.png" />
+</p>
+
+**IMPORTANTE:** Recuerda hacer esto ultimo para ambas Funciones (msgHandler y sqsHandler).
 # Asociar Api Gateway y SQS a las funciones lambda:
 
 ## Api Gateway
@@ -68,18 +81,6 @@
 
 <p align="left">
   <img height="500" src="./img/Github6.png" />
-</p>
-
-- Para finalizar asignaremos el rol que hemos creado anteriormente a nuestras funciones Lambda. Para ello buscamos Lambda como lo hemos hecho con anterioridad, seleccionamos la funcion a la que le deseemos asignar el rol (En este caso se lo vamos a asignar a las dos), nos vamos a Configuración-Permisos y en Rol de ejecución le damos en Editar.
-
-<p align="left">
-  <img height="500" src="./img/Github14.png" />
-</p>
-
-- Aqui seleccionamos el Rol que acabamos de crear y le damos a guardar.
-
-<p align="left">
-  <img height="500" src="./img/Github15.png" />
 </p>
 
 ## SQS
