@@ -5,6 +5,7 @@ const sqs = new AWS.SQS();
 const sqsURL = `https://sqs.us-east-1.amazonaws.com/${process.env.ACCOUNT_ID}/MyQueue`;
 import {APIGatewayAuthorizerHandler} from 'aws-lambda';
 
+//Creo diferentes interfaces para los distintos tipos de mensajes que se van manejar.
 interface MailReceived {
     to: string;
     message: string;
@@ -21,21 +22,24 @@ interface SQSInfo {
     QueueUrl: string;
 }
 
+//Creo la funcion handler del mensaje que se recibe del api Gateway.
 export const handler : APIGatewayAuthorizerHandler = async (event) => {
     try{
+        // Si no recibo nada en el body, retorno un error.
         if(!event['body']) return {statusCode: 400, body: 'No body found'};
 
         let body : any = JSON.parse(event['body']);
         
         console.log(`Received event => `, body);
         
+        // Valido el mail que se recibe.
         let mailValidated : any = validMail(body);
     
         console.log('This is the mail validated received => ', mailValidated);
         
         if(mailValidated['statusCode']) return mailValidated;
         
-    
+        // Formateo el mail.
         let mailFormatted : FormattedMail = formatMail(mailValidated);
         
         console.log('This is the message received => ', mailFormatted);
@@ -48,7 +52,7 @@ export const handler : APIGatewayAuthorizerHandler = async (event) => {
         
         console.log('This is the message queue in the SQS =>', message);
         
-        
+        // Envio el mensaje a la cola de SQS.
         let response = await sqs.sendMessage(message).promise();
         return {statusCode: 200, body: `Message added to the SQS with this ID => ${JSON.stringify(response.MessageId)}`};
         
@@ -85,6 +89,7 @@ function formatMail(mail : MailReceived) : FormattedMail {
 
 export const sqsHandler = async (event) =>{
 
+    // Logeo el mensaje que se recibe de la cola de SQS.
     let message : any = event.Records[0].body;
 
     console.log('This is the message received in the SQS => ', message);
