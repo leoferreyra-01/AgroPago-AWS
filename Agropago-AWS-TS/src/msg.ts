@@ -1,6 +1,7 @@
-const AWS = require('aws-sdk');
-require('dotenv').config()
+import AWS from 'aws-sdk';
 AWS.config.update({region: 'us-east-1'});
+import dotenv from 'dotenv';
+require('dotenv').config();
 const sqs = new AWS.SQS();
 const sqsURL = `https://sqs.us-east-1.amazonaws.com/${process.env.ACCOUNT_ID}/MyQueue`;
 import {APIGatewayAuthorizerHandler} from 'aws-lambda';
