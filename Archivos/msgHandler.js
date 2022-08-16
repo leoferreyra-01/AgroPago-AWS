@@ -1,7 +1,7 @@
 const AWS = require('aws-sdk');
 AWS.config.update({region: 'us-east-1'});
 const sqs = new AWS.SQS();
-const sqsURL = `https://sqs.us-east-1.amazonaws.com/957429122486/mailingSQS`;
+const sqsURL = `https://sqs.us-east-1.amazonaws.com/<AccountId>/MyQueue`;
 
 exports.handler = async (event) => {
     try{
