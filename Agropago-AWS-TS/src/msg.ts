@@ -29,27 +29,24 @@ export const handler : APIGatewayAuthorizerHandler = async (event) => {
         if(!event['body']) return {statusCode: 400, body: 'No body found'};
 
         let body : any = JSON.parse(event['body']);
-        
         console.log(`Received event => `, body);
         
         // Valido el mail que se recibe.
         let mailValidated : any = validMail(body);
-    
         console.log('This is the mail validated received => ', mailValidated);
         
+        // Si el mail no es valido, retorno un error.
         if(mailValidated['statusCode']) return mailValidated;
         
-        // Formateo el mail.
+        // Formateo el mail agregandole timestamps.
         let mailFormatted : FormattedMail = formatMail(mailValidated);
-        
         console.log('This is the message received => ', mailFormatted);
         
-        
+        // Creo el mensaje que se va a enviar a la cola.
         let message : SQSInfo = {
             MessageBody: JSON.stringify(mailFormatted),
             QueueUrl: sqsURL
         };
-        
         console.log('This is the message queue in the SQS =>', message);
         
         // Envio el mensaje a la cola de SQS.
@@ -64,6 +61,7 @@ export const handler : APIGatewayAuthorizerHandler = async (event) => {
     }
 }
 
+// Creo una funcion que va a validar el mail que se recibe.
 function validMail(mail : MailReceived) : any {
     console.log('Received mail in validMail function => ', mail);
     
@@ -75,6 +73,7 @@ function validMail(mail : MailReceived) : any {
     return mail;
 }
 
+// Creo una funcion que va a darle el formato indicado al mail que se recibe.
 function formatMail(mail : MailReceived) : FormattedMail {
 
     //console.log('Mail received in formatMail function => ', mailF);
@@ -87,6 +86,7 @@ function formatMail(mail : MailReceived) : FormattedMail {
     return data;
 }
 
+// Creo una funcion handler que va a manejar los mensajes que se reciban en la cola SQS.
 export const sqsHandler = async (event) =>{
 
     // Logeo el mensaje que se recibe de la cola de SQS.
