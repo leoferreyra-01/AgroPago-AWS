@@ -52,7 +52,16 @@
 
 - Ya en los ultimos pasos tenemos que logearnos en serverless para poder deployar nuestra aplicion. Para ello pondremos el comando serverless login en nuestra consola de comandos, esto nos redigira a la pagina de serverless. De no ser asi se nos proporciona un Link al cual ir.
 
-- Una vez redirigido seleccionan el metodo para logearse (Recomendado Github), autorizan a la app a utilizar la info de Github. Luego crear su nombre de usuario
+<p align="left">
+  <img height="200" src="./img/Github7.png" />
+</p>
+
+- Una vez redirigido seleccionan el metodo para logearse (Recomendado Github), autorizan a la app a utilizar la info de Github. Luego crear su nombre de usuario y una vez le aparezca la siguiente imagen en pantalla pueden seguir con los siguientes pasos.
+
+<p align="left">
+  <img height="500" src="./img/Github8.png" />
+</p>
+
 # Ultimas configuraciones
 
 - Como ultimo, antes de correr nuestra aplicacion, tendríamos que configurar dos cosas en nuestro archivo serverless.yml. Cambiaremos en ACCOUNT_ID con nuestro ACCOUNT_ID, y lo mismo con la region.
