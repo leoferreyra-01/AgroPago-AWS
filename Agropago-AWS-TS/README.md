@@ -48,6 +48,11 @@
   + AWS_SECRET_ACCESS_KEY=<Your secret Access Key>
 - Los ultimos dos los generamos al crear el usuario que creamos con anterioridad.
 
+# Logearse en serverless
+
+- Ya en los ultimos pasos tenemos que logearnos en serverless para poder deployar nuestra aplicion. Para ello pondremos el comando serverless login en nuestra consola de comandos, esto nos redigira a la pagina de serverless. De no ser asi se nos proporciona un Link al cual ir.
+
+- Una vez redirigido seleccionan el metodo para logearse (Recomendado Github), autorizan a la app a utilizar la info de Github. Luego crear su nombre de usuario
 # Ultimas configuraciones
 
 - Como ultimo, antes de correr nuestra aplicacion, tendríamos que configurar dos cosas en nuestro archivo serverless.yml. Cambiaremos en ACCOUNT_ID con nuestro ACCOUNT_ID, y lo mismo con la region.

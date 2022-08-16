@@ -1,5 +1,3 @@
-org: peleo
-app: msg
 service: msg
 
 useDotenv: true
@@ -44,4 +42,3 @@ resources:
 
 plugins:
   - serverless-esbuild
-  - serverless-offline
